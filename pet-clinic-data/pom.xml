@@ -4,7 +4,7 @@
   <parent>
     <groupId>guru.springframework.petclinic</groupId>
     <artifactId>sfgpetclinic</artifactId>
-    <version>2.0.1-SNAPSHOT</version>
+    <version>2.0.1</version>
   </parent>
   
   <artifactId>pet-clinic-data</artifactId>
