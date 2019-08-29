@@ -6,6 +6,7 @@ import org.pet.clinic.data.Services.OwnerService;
 import org.pet.clinic.data.Services.VetService;
 import org.pet.clinic.data.Services.Map.OwnerServiceMap;
 import org.pet.clinic.data.Services.Map.VetServiceMap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -15,9 +16,9 @@ public class DataLoader implements CommandLineRunner {
 	private final OwnerService ownerService;
 	private final VetService vetService;
 	
-	public DataLoader() {
-		this.ownerService = new OwnerServiceMap();
-		this.vetService = new VetServiceMap();
+	public DataLoader(OwnerService ownerService,VetService vetService) {
+		this.ownerService = ownerService;
+		this.vetService = vetService;
 	}
 	
 	@Override
@@ -44,12 +45,14 @@ public class DataLoader implements CommandLineRunner {
 		vetService.save(vet1);
 		
 		Vet vet2 = new Vet();
-		vet2.setId(1L);
+		vet2.setId(2L);
 		vet2.setFirstName("Ahlem");
 		vet2.setLastName("Teniou");
 		vetService.save(vet2);
 		
 		System.out.println("Loaded vets...");
+		System.out.println(ownerService.findAll().toString());
+		System.out.println(vetService.findAll().toString());
 	}
 
 }
