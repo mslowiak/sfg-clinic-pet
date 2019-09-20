@@ -5,7 +5,11 @@ import java.util.Set;
 public class Vet extends Person {
 	
 	private Set<Speciality> specialities;
-
+	
+	public Vet() {
+		
+	}
+	
 	public Vet(Set<Speciality> specialities) {
 		super();
 		this.specialities = specialities;

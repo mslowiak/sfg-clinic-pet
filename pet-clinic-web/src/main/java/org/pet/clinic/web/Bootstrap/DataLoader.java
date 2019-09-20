@@ -1,8 +1,10 @@
 package org.pet.clinic.web.Bootstrap;
 
 import org.pet.clinic.data.Model.Owner;
+import org.pet.clinic.data.Model.PetType;
 import org.pet.clinic.data.Model.Vet;
 import org.pet.clinic.data.Services.OwnerService;
+import org.pet.clinic.data.Services.PetTypeService;
 import org.pet.clinic.data.Services.VetService;
 import org.pet.clinic.data.Services.Map.OwnerServiceMap;
 import org.pet.clinic.data.Services.Map.VetServiceMap;
@@ -15,15 +17,26 @@ public class DataLoader implements CommandLineRunner {
 	
 	private final OwnerService ownerService;
 	private final VetService vetService;
+	private final PetTypeService petTypeService;
 	
-	public DataLoader(OwnerService ownerService,VetService vetService) {
+	public DataLoader(OwnerService ownerService,VetService vetService, PetTypeService petTypeService) {
 		this.ownerService = ownerService;
 		this.vetService = vetService;
+		this.petTypeService = petTypeService;
 	}
 	
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
+		
+		PetType dog = new PetType();
+		dog.setName("Dog");
+		PetType savedDogPetType = petTypeService.save(dog);
+		
+		PetType cat = new PetType();
+		dog.setName("Cat");
+		PetType savedCatPetType = petTypeService.save(cat);
+		
 		Owner owner1 = new Owner();
 		owner1.setFirstName("Hichem");
 		owner1.setLastName("CHABANE");
