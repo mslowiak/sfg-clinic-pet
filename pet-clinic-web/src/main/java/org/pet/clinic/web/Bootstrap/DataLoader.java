@@ -1,14 +1,14 @@
 package org.pet.clinic.web.Bootstrap;
 
+import java.time.LocalDate;
+
 import org.pet.clinic.data.Model.Owner;
+import org.pet.clinic.data.Model.Pet;
 import org.pet.clinic.data.Model.PetType;
 import org.pet.clinic.data.Model.Vet;
 import org.pet.clinic.data.Services.OwnerService;
 import org.pet.clinic.data.Services.PetTypeService;
 import org.pet.clinic.data.Services.VetService;
-import org.pet.clinic.data.Services.Map.OwnerServiceMap;
-import org.pet.clinic.data.Services.Map.VetServiceMap;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -40,11 +40,34 @@ public class DataLoader implements CommandLineRunner {
 		Owner owner1 = new Owner();
 		owner1.setFirstName("Hichem");
 		owner1.setLastName("CHABANE");
+		owner1.setAddress("UV15 374 Logements Promotion Dambri");
+		owner1.setCity("Constantine");
+		owner1.setTelephone("0542216729");
+		
+		Pet hichemPet = new Pet();
+		hichemPet.setName("Rosko");
+		hichemPet.setPetType(savedDogPetType);
+		hichemPet.setOwner(owner1);
+		hichemPet.setBirthDate(LocalDate.now());
+		
+		owner1.getSetPets().add(hichemPet);
+		
 		ownerService.save(owner1);
 		
 		Owner owner2 = new Owner();
 		owner2.setFirstName("Mehdi");
 		owner2.setLastName("Lebrima");
+		owner1.setAddress("Cité Elzawech, Boussouf");
+		owner1.setCity("Constantine");
+		owner1.setTelephone("0775193612");
+		
+		Pet mehdiPet = new Pet();
+		mehdiPet.setName("Rocky");
+		mehdiPet.setPetType(savedCatPetType);
+		mehdiPet.setOwner(owner2);
+		mehdiPet.setBirthDate(LocalDate.now());
+		owner2.getSetPets().add(mehdiPet);
+		
 		ownerService.save(owner2);
 		
 		System.out.println("Loaded owners...");
