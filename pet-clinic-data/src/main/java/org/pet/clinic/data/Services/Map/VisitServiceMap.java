@@ -4,7 +4,9 @@ import java.util.Set;
 
 import org.pet.clinic.data.Model.Visit;
 import org.pet.clinic.data.Services.VisitService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class VisitServiceMap extends AbstractMapService<Visit, Long> implements VisitService {
 	
 	

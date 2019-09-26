@@ -7,10 +7,12 @@ import org.pet.clinic.data.Model.Pet;
 import org.pet.clinic.data.Model.PetType;
 import org.pet.clinic.data.Model.Speciality;
 import org.pet.clinic.data.Model.Vet;
+import org.pet.clinic.data.Model.Visit;
 import org.pet.clinic.data.Services.OwnerService;
 import org.pet.clinic.data.Services.PetTypeService;
 import org.pet.clinic.data.Services.SpecialityService;
 import org.pet.clinic.data.Services.VetService;
+import org.pet.clinic.data.Services.VisitService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -20,13 +22,15 @@ public class DataLoader implements CommandLineRunner {
 	private final OwnerService ownerService;
 	private final VetService vetService;
 	private final PetTypeService petTypeService;
-	private SpecialityService specialityService;
-	
-	public DataLoader(OwnerService ownerService,VetService vetService, PetTypeService petTypeService,SpecialityService specialityService) {
+	private final SpecialityService specialityService;
+	private final VisitService visitService;
+	public DataLoader(OwnerService ownerService,VetService vetService, PetTypeService petTypeService,
+			SpecialityService specialityService,VisitService visitService) {
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.petTypeService = petTypeService;
 		this.specialityService = specialityService;
+		this.visitService = visitService;
 	}
 	
 	@Override
@@ -92,6 +96,11 @@ public class DataLoader implements CommandLineRunner {
 		
 		ownerService.save(owner2);
 		
+		Visit catVisit = new Visit();
+		catVisit.setPet(hichemPet);
+		catVisit.setDescription("Sneezy Kitty");
+		catVisit.setDate(LocalDate.now());
+		visitService.save(catVisit);
 		System.out.println("Loaded owners...");
 		
 		Vet vet1 = new Vet();
