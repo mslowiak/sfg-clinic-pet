@@ -16,7 +16,6 @@ public class PetTypeSpringDataJpaService implements PetTypeService {
 	private final PetsTypeRepository petsTypeRepository;
 
 	public PetTypeSpringDataJpaService(PetsTypeRepository petsTypeRepository) {
-		super();
 		this.petsTypeRepository = petsTypeRepository;
 	}
 

@@ -15,13 +15,12 @@ import org.springframework.stereotype.Service;
 @Profile("springdatajpa")
 public class OwnerSpringDataJpaService implements OwnerService {
 	
-	private final OwnersRepository ownersRepository;
-	private final PetsRepository petsRepository;
-	private final PetsTypeRepository petsTypeRepository;
-	
+	private OwnersRepository ownersRepository;
+	private PetsRepository petsRepository;
+	private PetsTypeRepository petsTypeRepository;
+		
 	public OwnerSpringDataJpaService(OwnersRepository ownersRepository, PetsRepository petsRepository,
 			PetsTypeRepository petsTypeRepository) {
-		super();
 		this.ownersRepository = ownersRepository;
 		this.petsRepository = petsRepository;
 		this.petsTypeRepository = petsTypeRepository;

@@ -36,88 +36,91 @@ public class DataLoader implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		int count = petTypeService.findAll().size();
-		if(count == 0) {
+		loadData();
+		//int count = petTypeService.findAll().size();
+		//System.out.println("Count : "+count);
+		/*if(count == 0) {
 			loadData();
-		}
+		}*/
 	}
 
 	private void loadData() {
-		PetType dog = new PetType();
-		dog.setName("Dog");
-		PetType savedDogPetType = petTypeService.save(dog);
-		
-		PetType cat = new PetType();
-		dog.setName("Cat");
-		PetType savedCatPetType = petTypeService.save(cat);
-		
-		Speciality radiology = new Speciality();
-		radiology.setDescription("Radiology");
-		Speciality savedRadiology = specialityService.save(radiology);
-		
-		Speciality surgery = new Speciality();
-		surgery.setDescription("Surgery");
-		Speciality savedSurgery = specialityService.save(surgery);
-		
-		Speciality dentistry = new Speciality();
-		dentistry.setDescription("Dentistry");
-		Speciality savedDentistry = specialityService.save(dentistry);
-		
-		Owner owner1 = new Owner();
-		owner1.setFirstName("Hichem");
-		owner1.setLastName("CHABANE");
-		owner1.setAddress("UV15 374 Logements Promotion Dambri");
-		owner1.setCity("Constantine");
-		owner1.setTelephone("0542216729");
-		
-		Pet hichemPet = new Pet();
-		hichemPet.setName("Rosko");
-		hichemPet.setPetType(savedDogPetType);
-		hichemPet.setOwner(owner1);
-		hichemPet.setBirthDate(LocalDate.now());
-		
-		owner1.getSetPets().add(hichemPet);
-		
-		ownerService.save(owner1);
-		
-		Owner owner2 = new Owner();
-		owner2.setFirstName("Mehdi");
-		owner2.setLastName("Lebrima");
-		owner1.setAddress("Cité Elzawech, Boussouf");
-		owner1.setCity("Constantine");
-		owner1.setTelephone("0775193612");
-		
-		Pet mehdiPet = new Pet();
-		mehdiPet.setName("Rocky");
-		mehdiPet.setPetType(savedCatPetType);
-		mehdiPet.setOwner(owner2);
-		mehdiPet.setBirthDate(LocalDate.now());
-		owner2.getSetPets().add(mehdiPet);
-		
-		ownerService.save(owner2);
-		
-		Visit catVisit = new Visit();
-		catVisit.setPet(hichemPet);
-		catVisit.setDescription("Sneezy Kitty");
-		catVisit.setDate(LocalDate.now());
-		visitService.save(catVisit);
-		System.out.println("Loaded owners...");
-		
-		Vet vet1 = new Vet();
-		vet1.setFirstName("Aymen");
-		vet1.setLastName("CHABANE");
-		vet1.getSpecialities().add(savedDentistry);
-		vetService.save(vet1);
-		
-		Vet vet2 = new Vet();
-		vet2.setFirstName("Ahlem");
-		vet2.setLastName("Teniou");
-		vet2.getSpecialities().add(savedSurgery);
-		vetService.save(vet2);
-		
-		System.out.println("Loaded vets...");
-		System.out.println(ownerService.findAll().toString());
-		System.out.println(vetService.findAll().toString());
+		 PetType dog = new PetType();
+	        dog.setName("Dog");
+	        PetType savedDogPetType = petTypeService.save(dog);
+
+	        PetType cat = new PetType();
+	        cat.setName("Cat");
+	        PetType savedCatPetType = petTypeService.save(cat);
+
+	        Speciality radiology = new Speciality();
+	        radiology.setDescription("Radiology");
+	        Speciality savedRadiology = specialityService.save(radiology);
+
+	        Speciality surgery = new Speciality();
+	        surgery.setDescription("Surgery");
+	        Speciality savedSurgery = specialityService.save(surgery);
+
+	        Speciality dentistry = new Speciality();
+	        dentistry.setDescription("dentistry");
+	        Speciality savedDentistry = specialityService.save(dentistry);
+
+	        Owner owner1 = new Owner();
+	        owner1.setFirstName("Michael");
+	        owner1.setLastName("Weston");
+	        owner1.setAddress("123 Brickerel");
+	        owner1.setCity("Miami");
+	        owner1.setTelephone("1231231234");
+
+	        Pet mikesPet = new Pet();
+	        mikesPet.setPetType(savedDogPetType);
+	        mikesPet.setOwner(owner1);
+	        mikesPet.setBirthDate(LocalDate.now());
+	        mikesPet.setName("Rosco");
+	        owner1.getSetPets().add(mikesPet);
+
+	        ownerService.save(owner1);
+
+	        Owner owner2 = new Owner();
+	        owner2.setFirstName("Fiona");
+	        owner2.setLastName("Glenanne");
+	        owner2.setAddress("123 Brickerel");
+	        owner2.setCity("Miami");
+	        owner2.setTelephone("1231231234");
+
+	        Pet fionasCat = new Pet();
+	        fionasCat.setName("Just Cat");
+	        fionasCat.setOwner(owner2);
+	        fionasCat.setBirthDate(LocalDate.now());
+	        fionasCat.setPetType(savedCatPetType);
+	        owner2.getSetPets().add(fionasCat);
+
+	        ownerService.save(owner2);
+
+	        Visit catVisit = new Visit();
+	        catVisit.setPet(fionasCat);
+	        catVisit.setDate(LocalDate.now());
+	        catVisit.setDescription("Sneezy Kitty");
+
+	        visitService.save(catVisit);
+
+	        System.out.println("Loaded Owners....");
+
+	        Vet vet1 = new Vet();
+	        vet1.setFirstName("Sam");
+	        vet1.setLastName("Axe");
+	        vet1.getSpecialities().add(savedRadiology);
+
+	        vetService.save(vet1);
+
+	        Vet vet2 = new Vet();
+	        vet2.setFirstName("Jessie");
+	        vet2.setLastName("Porter");
+	        vet2.getSpecialities().add(savedSurgery);
+
+	        vetService.save(vet2);
+
+	        System.out.println("Loaded Vets....");
 	}
 
 }
