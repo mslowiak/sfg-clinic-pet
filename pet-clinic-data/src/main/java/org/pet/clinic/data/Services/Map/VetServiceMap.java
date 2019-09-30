@@ -2,6 +2,7 @@ package org.pet.clinic.data.Services.Map;
 
 import java.util.Set;
 
+import lombok.RequiredArgsConstructor;
 import org.pet.clinic.data.Model.Speciality;
 import org.pet.clinic.data.Model.Vet;
 import org.pet.clinic.data.Services.SpecialityService;
@@ -11,12 +12,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Profile("servicemap")
+@RequiredArgsConstructor
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 	
 	private final SpecialityService specialityService;
-	public VetServiceMap(SpecialityService specialityService) {
-		this.specialityService = specialityService;
-	}
 	
 	@Override
 	public Set<Vet> findAll(){

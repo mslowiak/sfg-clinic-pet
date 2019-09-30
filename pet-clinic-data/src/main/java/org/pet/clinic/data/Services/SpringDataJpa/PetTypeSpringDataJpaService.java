@@ -3,6 +3,7 @@ package org.pet.clinic.data.Services.SpringDataJpa;
 import java.util.HashSet;
 import java.util.Set;
 
+import lombok.RequiredArgsConstructor;
 import org.pet.clinic.data.Model.PetType;
 import org.pet.clinic.data.Repositories.PetsTypeRepository;
 import org.pet.clinic.data.Services.PetTypeService;
@@ -11,13 +12,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Profile("springdatajpa")
+@RequiredArgsConstructor
 public class PetTypeSpringDataJpaService implements PetTypeService {
 	
 	private final PetsTypeRepository petsTypeRepository;
-
-	public PetTypeSpringDataJpaService(PetsTypeRepository petsTypeRepository) {
-		this.petsTypeRepository = petsTypeRepository;
-	}
 
 	@Override
 	public Set<PetType> findAll() {
@@ -46,6 +44,4 @@ public class PetTypeSpringDataJpaService implements PetTypeService {
 	public void deleteById(Long id) {
 		petsTypeRepository.deleteById(id);
 	}
-	
-	
 }

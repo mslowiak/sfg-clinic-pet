@@ -1,5 +1,6 @@
 package org.pet.clinic.web.Controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.pet.clinic.data.Services.OwnerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,13 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/owners")
 @Controller
+@RequiredArgsConstructor
 public class OwnerController {
 	
 	private final OwnerService ownerService;
-	
-	public OwnerController(OwnerService ownerService) {
-		this.ownerService = ownerService;
-	}
 	
 	@RequestMapping({"","/","/index","/index.html"})
 	public String listOwners(Model model) {

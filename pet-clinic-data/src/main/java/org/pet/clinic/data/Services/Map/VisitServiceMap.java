@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Profile("servicemap")
 public class VisitServiceMap extends AbstractMapService<Visit, Long> implements VisitService {
-	
-	
+
 	@Override
 	public Set<Visit> findAll(){
 		return super.findAll();

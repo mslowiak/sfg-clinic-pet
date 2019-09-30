@@ -40,5 +40,4 @@ public class PetTypeMapService extends AbstractMapService<PetType, Long> impleme
 		// TODO Auto-generated method stub
 		super.delete(object);
 	}
-	
 }

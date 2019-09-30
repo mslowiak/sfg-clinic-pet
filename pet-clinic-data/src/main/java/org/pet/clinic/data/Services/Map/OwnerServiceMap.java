@@ -2,6 +2,7 @@ package org.pet.clinic.data.Services.Map;
 
 import java.util.Set;
 
+import lombok.RequiredArgsConstructor;
 import org.pet.clinic.data.Model.Owner;
 import org.pet.clinic.data.Model.Pet;
 import org.pet.clinic.data.Services.OwnerService;
@@ -12,16 +13,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Profile("servicemap")
+@RequiredArgsConstructor
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 	
 	private final PetService petService;
 	private final PetTypeService petTypeService;
-	
-	public OwnerServiceMap(PetService petService,PetTypeService petTypeService) {
-		this.petService = petService;
-		this.petTypeService = petTypeService;
-	}
-	
+
 	@Override
 	public Set<Owner> findAll(){
 		return super.findAll();
@@ -75,6 +72,4 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
 }

@@ -40,6 +40,4 @@ public class SpecialityServiceMap extends AbstractMapService<Speciality, Long> i
 		// TODO Auto-generated method stub
 		super.delete(object);
 	}
-	
-	
 }

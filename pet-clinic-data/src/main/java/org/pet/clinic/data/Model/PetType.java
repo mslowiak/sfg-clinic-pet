@@ -4,32 +4,24 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "petsType")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class PetType extends BaseEntity {
 	
 	@Column(name = "type")
 	private String name;
-	
-	public PetType() {
-		
-	}
-	
-	public PetType(String name) {
-		this.name = name;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	@Override
 	public String toString() {
 		return "PetType [name=" + name + "]";
 	}
-	
 }

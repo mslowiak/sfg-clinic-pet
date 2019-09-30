@@ -10,8 +10,8 @@ import java.util.Set;
 import org.pet.clinic.data.Model.BaseEntity;
 
 public abstract class AbstractMapService<T extends BaseEntity,ID extends Long> {
-	
-	public Map<Long,T> map = new HashMap<>();  
+
+	private Map<Long, T> map = new HashMap<>();
 	
 	Set<T> findAll(){
 		return new HashSet<>(map.values());

@@ -3,6 +3,7 @@ package org.pet.clinic.data.Services.SpringDataJpa;
 import java.util.HashSet;
 import java.util.Set;
 
+import lombok.RequiredArgsConstructor;
 import org.pet.clinic.data.Model.Speciality;
 import org.pet.clinic.data.Repositories.SpecialitiesRepository;
 import org.pet.clinic.data.Services.SpecialityService;
@@ -11,13 +12,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Profile("springdatajpa")
+@RequiredArgsConstructor
 public class SpecialitySpringDataJpaService implements SpecialityService {
 	
 	private SpecialitiesRepository specialitiesRepository;
-	
-	public SpecialitySpringDataJpaService(SpecialitiesRepository specialitiesRepository) {
-		this.specialitiesRepository = specialitiesRepository;
-	}
 
 	@Override
 	public Set<Speciality> findAll() {

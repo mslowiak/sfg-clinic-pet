@@ -3,6 +3,7 @@ package org.pet.clinic.data.Services.SpringDataJpa;
 import java.util.HashSet;
 import java.util.Set;
 
+import lombok.RequiredArgsConstructor;
 import org.pet.clinic.data.Model.Owner;
 import org.pet.clinic.data.Repositories.OwnersRepository;
 import org.pet.clinic.data.Repositories.PetsRepository;
@@ -13,18 +14,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Profile("springdatajpa")
+@RequiredArgsConstructor
 public class OwnerSpringDataJpaService implements OwnerService {
 	
-	private OwnersRepository ownersRepository;
-	private PetsRepository petsRepository;
-	private PetsTypeRepository petsTypeRepository;
-		
-	public OwnerSpringDataJpaService(OwnersRepository ownersRepository, PetsRepository petsRepository,
-			PetsTypeRepository petsTypeRepository) {
-		this.ownersRepository = ownersRepository;
-		this.petsRepository = petsRepository;
-		this.petsTypeRepository = petsTypeRepository;
-	}
+	private final OwnersRepository ownersRepository;
+	private final PetsRepository petsRepository;
+	private final PetsTypeRepository petsTypeRepository;
 
 	@Override
 	public Set<Owner> findAll() {
@@ -66,6 +61,4 @@ public class OwnerSpringDataJpaService implements OwnerService {
 		// TODO Auto-generated method stub
 		return ownersRepository.findByLastName(lastName);
 	}
-	
-	
 }

@@ -2,6 +2,7 @@ package org.pet.clinic.web.Bootstrap;
 
 import java.time.LocalDate;
 
+import lombok.RequiredArgsConstructor;
 import org.pet.clinic.data.Model.Owner;
 import org.pet.clinic.data.Model.Pet;
 import org.pet.clinic.data.Model.PetType;
@@ -17,6 +18,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class DataLoader implements CommandLineRunner {
 	
 	private final OwnerService ownerService;
@@ -24,14 +26,6 @@ public class DataLoader implements CommandLineRunner {
 	private final PetTypeService petTypeService;
 	private final SpecialityService specialityService;
 	private final VisitService visitService;
-	public DataLoader(OwnerService ownerService,VetService vetService, PetTypeService petTypeService,
-			SpecialityService specialityService,VisitService visitService) {
-		this.ownerService = ownerService;
-		this.vetService = vetService;
-		this.petTypeService = petTypeService;
-		this.specialityService = specialityService;
-		this.visitService = visitService;
-	}
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -122,5 +116,4 @@ public class DataLoader implements CommandLineRunner {
 
 	        System.out.println("Loaded Vets....");
 	}
-
 }
